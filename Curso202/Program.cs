@@ -1,21 +1,26 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+/* Agora é pra ler um arquivo com funcionários e salários.
+ */
+
+using Curso202.Entities;
+
 string path = @"C:\temp\nomes.txt";
 
 try
 {
     using (StreamReader sr = File.OpenText(path))
     {
-        List<string> list = new List<string>();
+        List<Employee> list = new List<Employee>();
 
         while (!sr.EndOfStream)
-        {
-            list.Add(sr.ReadLine());
+        { 
+            list.Add(new Employee(sr.ReadLine()));
         }
         list.Sort();
-        foreach (string str in list)
+        foreach (Employee emp in list)
         {
-            Console.WriteLine(str);
+            Console.WriteLine(emp);
         }
     }
 }
